@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/actualizarContacto/{{contactos.1}}/{{contactos.2}}" method="POST">
+        <h3>Editar contacto</h3>
+        <input type="text" name="nombreCompleto" placeholder="Nombre completo" value="{{contactos.1}}">
+        <input type="text" name="celular" placeholder="Celular" value="{{contactos.2}}">
+        <input type="text" name="correo_electronico" placeholder="Correo" value="{{contactos.3}}">
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

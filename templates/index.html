@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {%with mensajes = get_flashed_messages()%}
+    {%if mensajes%}
+    {%for mensaje in mensajes%}
+        <p>{{mensaje}}</p>   
+    {%endfor%}
+    {%endif%}
+    {%endwith%}
+    <form action="/agregarContacto" method="POST">
+        <h3>Agregar</h3>
+        <input type="text" name="nombreCompleto" placeholder="Nombre completo">
+        <input type="text" name="celular" placeholder="Celular">
+        <input type="text" name="correo_electronico" placeholder="Correo">
+        <button type="submit">Guardar</button>
+    </form>
+
+    <form action="/buscarContacto" method="POST">
+        <h3>Buscar</h3>
+        <input type="text" name="nombreCompleto", placeholder="Nombre completo">
+        <input type="text" name="celular", placeholder="Celular">
+        <button type="submit">Guardar</button>
+    </form>
+    
+    <table>
+        <h3>Lista de contactos</h3>
+        <thead>
+            <td>Nombre</td>
+            <td>Celular</td>
+            <td>Correo electronico</td>
+            <td>Operaciones</td>
+        </thead>
+        <tbody>
+            {%for contacto in contactos%}
+                <tr>
+                    <td>{{contacto.1}}</td>
+                    <td>{{contacto.2}}</td>
+                    <td>{{contacto.3}}</td>
+                    <td>
+                        <a href="/editarContacto/{{contacto.1}}/{{contacto.2}}">Editar</a>
+                        <a href="/eliminarContacto/{{contacto.1}}/{{contacto.2}}">Eliminar</a>
+                    </td>
+                </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</body>
+</html>
